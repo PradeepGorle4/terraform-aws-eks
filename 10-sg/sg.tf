@@ -59,7 +59,7 @@ module "vpn_sg" {
     common_tags = var.common_tags
 }
 
-resource "aws_security_group_rule" "eks-node-contol-plane" { # eks nodes accepting traffic from control plane
+resource "aws_security_group_rule" "eks_node_contol_plane" { # eks nodes accepting traffic from control plane
     type = "ingress"
     from_port = 0
     to_port = 0
@@ -68,7 +68,7 @@ resource "aws_security_group_rule" "eks-node-contol-plane" { # eks nodes accepti
     security_group_id = module.eks_node_sg.sg_id
 }
 
-resource "aws_security_group_rule" "eks-control-plane-node" { # EKS Control-plane accepting traffic from nodes
+resource "aws_security_group_rule" "eks_control_plane_node" { # EKS Control-plane accepting traffic from nodes
     type = "ingress"
     from_port = 0
     to_port = 0
@@ -77,7 +77,7 @@ resource "aws_security_group_rule" "eks-control-plane-node" { # EKS Control-plan
     security_group_id = module.eks_control_plane_sg.sg_id
 }
 
-resource "aws_security_group_rule" "node-alb-ingress" { # EKS Nodes accepting traffic from alb_ingress
+resource "aws_security_group_rule" "node_alb_ingress" { # EKS Nodes accepting traffic from alb_ingress
     type = "ingress"
     from_port = 30000
     to_port = 32767
@@ -86,7 +86,7 @@ resource "aws_security_group_rule" "node-alb-ingress" { # EKS Nodes accepting tr
     security_group_id = module.eks_node_sg.sg_id
 }
 
-resource "aws_security_group_rule" "node-vpc" {
+resource "aws_security_group_rule" "node_vpc" {
     type = "ingress"
     from_port = 0
     to_port = 0
@@ -95,7 +95,7 @@ resource "aws_security_group_rule" "node-vpc" {
     security_group_id = module.eks_node_sg.sg_id
 }
 
-resource "aws_security_group_rule" "node-bastion" { # EKS Nodes accepting traffic from bastion
+resource "aws_security_group_rule" "node_bastion" { # EKS Nodes accepting traffic from bastion
     type = "ingress"
     from_port = 22
     to_port = 22
