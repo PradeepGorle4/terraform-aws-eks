@@ -9,7 +9,7 @@ module "eks" {
   version = "~> 20.0"
 
   cluster_name    = local.name
-  cluster_version = "1.31" # Later we will upgrade to the latest -1.32
+  cluster_version = "1.31" # Later we will upgrade to the latest - 1.32
   create_node_security_group = false
   create_cluster_security_group = false
   cluster_security_group_id = local.eks_control_plane_sg_id
@@ -53,6 +53,7 @@ module "eks" {
           AmazonEBSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
           AmazonEFSCSIDriverPolicy = "arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy"
           AmazonEKSLoadBalancingPolicy = "arn:aws:iam::aws:policy/AmazonEKSLoadBalancingPolicy"
+          AWSServiceRoleForAmazonEKSNodegroup = "arn:aws:iam::aws:policy/aws-service-role/AWSServiceRoleForAmazonEKSNodegroup"
       }
     }
   }
