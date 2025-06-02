@@ -104,6 +104,15 @@ resource "aws_security_group_rule" "node_bastion" { # EKS Nodes accepting traffi
     security_group_id = module.eks_node_sg.sg_id
 }
 
+resource "aws_security_group_rule" "eks_control_plane_bastion" { # EKS Control-plane accepting traffic from bastion
+    type = "ingress"
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    source_security_group_id = module.bastion_sg.sg_id
+    security_group_id = module.eks_control_plane_sg.sg_id
+}
+
 # App ALB accepting traffic from bastion
 
 resource "aws_security_group_rule" "alb_ingress_bastion" {
